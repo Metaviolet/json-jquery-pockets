@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>Pockets esqueleto</title>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+        <link rel="stylesheet" href="assets/pockets.css" />
+    </head>
+
+    <body>
+    <div class="overlay-modals scale-transition scale-out"></div>
+        <div class="row" id="container">
+         <h3>Pockets <a id="scale-demo" href="#!" class="btn-floating btn-large scale-transition create">
+    <i class="material-icons">add</i>
+  </a></h3>
+  <p class="notification">Puedes crear hasta 7 pockets</p>
+            <div class="pocket-list pocket-container col s12 row" id="activePockets">
+               
+                <!--<div class="pocket-item">
+                        <div class="pocket-info">
+                             <h3>Pocket</h3>
+                            <p class="status">Monto programado<br><span class="number">$2500</span></p>
+                        </div>
+                        <div class="pocket-amount">
+                            <p>$200</p>
+                        </div>
+                        <a id="editar" href="#">Editar programacion</a>
+                        <a id="movimientos" href="#">Ver movimientos</a>
+                        <a id="deposit" href="#">Añadir dinero</a>
+                        <a id="withdraw" href="#">Disponer dinero</a>
+                        <a id="destroy" href="#">Eliminar Pocket</a>
+                </div>-->
+            </div>
+
+            <div class="pocket-container card create-pocket-modal col s6 scale-transition scale-out">
+            <a class="btn-floating btn-small waves-effect waves-light red cancel-operation"><i class="material-icons">clear</i></a>
+                <h4>Crea un pocket</h4>
+                <form id="pocket-form-add">
+                    <input type="text" class="pocket-name" placeholder="Nombre" />
+                    <p>Cuenta de retiro</p>
+                    <input type="text" class="selected-account" value="Nómina ****1234"  disabled/>
+                    <p>¿Deseas apartar dinero en este momento?</p>
+                    <input type="radio" class="money" name="money" value="1" > Si
+                    <input type="radio" class="money" name="money" value="0" > No
+                    <input type="text" class="pocket-balance" placeholder="Quiero Apartar ahora" />
+                    <p>¿Deseas programar una cantidad para apartar automaticamente?</p>
+                    <input type="radio" class="program" name="program" value="1" >Si
+                    <input type="radio" class="program" name="program" value="0" >No
+                    <input type="text" class="prog-amount" placeholder="Quiero programar" />
+                    <input type="button" class="btn" value="Autorizar" onclick="pocket.add();" />
+                </form>
+            </div>
+             <div class="pocket-container card edit-pocket-modal col s6 scale-transition scale-out">
+             <a class="btn-floating btn-small waves-effect waves-light red cancel-operation"><i class="material-icons">clear</i></a>
+                <h3>Edita tu pocket <span class="pocket-name"></span></h3>
+                <form id="pocket-form-edit">
+                    <input type="text" class="pocket-name" />
+                    <p>Cuenta de retiro</p>
+                    <input type="text" class="selected-account" value="Nómina ****1234"  disabled/>
+                    <input type="button" class="btn ok-edit-pocket" value="Editar" />
+                </form>
+            </div>
+
+            <div class="pocket-container card program-pocket-modal col s6 scale-transition scale-out">
+            <a class="btn-floating btn-small waves-effect waves-light red cancel-operation"><i class="material-icons">clear</i></a>
+                <h4>Programa o edita la programación de tu pocket <span class="pocket-name"></span></h4>
+                <form id="pocket-form-program">
+                    <p>Cuenta de retiro</p>
+                    <input type="text" class="selected-account" value="Nómina ****1234"  disabled/>
+                    <p>¿Deseas programar una cantidad para apartar automaticamente?</p>
+                    <input type="radio" class="program" name="program" value="1" >Si
+                    <input type="radio" class="program" name="program" value="0" >No
+                    <p>¿Cuanto deseas apartar?</p>
+                    <input type="text" class="prog-amount" />
+                    <input type="button" class="btn ok-program-pocket" value="Autorizar" />
+                </form>
+            </div>
+
+             <div class="pocket-container card deposit-pocket-modal col s6 scale-transition scale-out">
+             <a class="btn-floating btn-small waves-effect waves-light red cancel-operation"><i class="material-icons">clear</i></a>
+                <h4>Añade dinero a tu pocket <span class="pocket-name"></span></h4>
+                <form id="pocket-form-deposit">
+                    <p>Cuenta de retiro</p>
+                    <input type="text" class="selected-account" value="Nómina ****1234"  disabled/>
+                    <p class="notification">El saldo actual de tu pocket <span class="pocket-name"></span> es <span class="pocket-balance"></span>, recuerda que el máximo que puedes depositar es el saldo actual en tu cuenta de nómina.
+                    <p>¿Cuanto dinero quieres añadir?</p>
+                    <input type="text" class="pocket-balance" />
+                    <input type="button" class="btn ok-deposit-pocket" value="Autorizar" />
+                </form>
+            </div>
+
+            <div class="pocket-container card withdraw-pocket-modal col s6 scale-transition scale-out">
+            <a class="btn-floating btn-small waves-effect waves-light red cancel-operation"><i class="material-icons">clear</i></a>
+                <h4>Retira dinero de tu pocket <span class="pocket-name"></span></h4>
+                <form id="pocket-form-withdraw">
+                    <p>Cuenta de retiro</p>
+                    <input type="text" class="selected-account" value="Nómina ****1234"  disabled/>
+                    <p class="notification">El saldo actual de tu pocket <span class="pocket-name"></span> es <span class="pocket-balance"></span>, ese es el monto máximo que puedes retirar.
+                    <p>¿Cuanto dinero quieres retirar?</p>
+                    <input type="text" class="pocket-balance" />
+                    <input type="checkbox" class="pocket-withdraw-all"> Disponer de todo el saldo
+                    <input type="button" class="btn ok-withdraw-pocket" value="Autorizar" />
+                </form>
+            </div>
+
+            <div style="clear:both;"></div>
+	          <script type="text/javascript" src="lib/jQuery/jquery.min.js"></script>
+                <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+            <script type="text/javascript" src="assets/pockets.js"></script>
+
+            <script type="text/javascript">
+                pocket.init();
+            </script>
+
+        </div>
+    </body>
+</html>

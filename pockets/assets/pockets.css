@@ -1,0 +1,80 @@
+/* nanoscrollbar */
+.nano .pane   { background: #888; }
+.nano .slider { background: #111; }
+
+body {
+    /* Override bootstrap properties */
+    background-color: #fff !important;
+    border: 0 !important;
+}
+
+#container{
+    margin: 0 auto;
+    width: 90%;
+    min-height: 100%;
+    background-color: transparent;
+    border: 0;
+}
+.pocket-container{
+    float: left;
+    min-height: 240px;
+    padding-bottom: 15px;
+    margin: 10px;
+}
+
+.btn{
+    margin: 10px auto;
+}
+.pocket-container input[type="radio"], .pocket-container input[type="checkbox"]{
+    position:static;
+    opacity:1;
+    left:auto;
+}
+/*.pocket-container input{
+    height: 30px;
+}*/
+
+.pocket-item{
+    margin: 5px;
+}
+
+.pocket-item a {
+    display: block;
+    /* margin-bottom: 5px; */
+    color: #e1e1e1;
+    font-size: 13px;
+}
+.pocket-item {
+    text-align: left;
+}
+
+.pocket-item a{
+    display:block;
+    margin-bottom:5px;
+}
+
+.col.s6.create-pocket-modal, .col.s6.program-pocket-modal,.col.s6.edit-pocket-modal,.col.s6.deposit-pocket-modal, .col.s6.withdraw-pocket-modal{
+    position: absolute;
+    top: 5%;
+    left: 0;
+    right:0;
+    margin:auto;
+    background:#fff;
+    float:none;
+    z-index:3;
+}
+
+a.btn-floating.btn-small.waves-effect.waves-light.red.cancel-operation {
+    float: right;
+    margin-top: -10px;
+    margin-right: -20px;
+}
+.overlay-modals{
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:2;
+}
